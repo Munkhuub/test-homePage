@@ -1,22 +1,39 @@
 "use client";
 
-import { InteractiveGridPattern } from "@/components/magicui/interactive-grid-pattern";
-import { InteractiveGrid } from "./_components/InteractiveGrid";
+import Particles from "./_components/Particles";
+
 export default function EnhancedHomePage() {
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      {/* Radial gradient background */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(125% 125% at 50% 10%, #000A17 40%, #007FFF 100%)",
-        }}
-      />
-      {/* Interactive grid overlay with blur */}
-      <InteractiveGrid />
+      {/* gradient background */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(125% 125% at 50% 10%, #000A17 40%, #007FFF 100%)",
+          }}
+        />
+
+        <img
+          src="./images/earth.png"
+          alt="Earth"
+          className="absolute top-100 left-1/2 -translate-x-1/2 w-[1000px] opacity-40 pointer-events-none animate-pulse z-10"
+        />
+        <Particles
+          className="absolute inset-0 z-0"
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={200}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
       {/* Main content */}
-      <div className="relative flex h-full w-full items-center justify-center">
+      <div className="relative flex h-full w-full items-center justify-center z-10">
         <div className="text-center space-y-8 max-w-4xl mx-auto px-6">
           <h1 className="text-white text-7xl font-bold tracking-tight leading-tight">
             Цаг захиалгын
@@ -125,9 +142,8 @@ export default function EnhancedHomePage() {
           </div>
         </div>
       </div>
-
       {/* Subtle overlay gradient for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none z-5" />
     </div>
   );
 }
