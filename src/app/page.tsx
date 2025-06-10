@@ -26,9 +26,8 @@ export default function EnhancedHomePage() {
           </h1>
 
           <p className="text-blue-100/80 text-xl leading-relaxed max-w-2xl mx-auto">
-            Experience a dynamic grid that responds to your every move. Watch as
-            squares light up with beautiful transitions and create mesmerizing
-            patterns.
+            Монгол дахь шилдэг үйлчилгээ үзүүлэгчидтэй холбогдоод цаг
+            захиалаарай.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
