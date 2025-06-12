@@ -18,47 +18,8 @@ export const Hero = () => {
     const subtitle = subtitleRef.current;
     const button = buttonRef.current;
 
-    // Hero section parallax animation
-    gsap.fromTo(
-      hero,
-      {
-        scale: 1,
-        opacity: 1,
-      },
-      {
-        scale: 0.8,
-        opacity: 0.3,
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-          pin: false,
-        },
-      }
-    );
-
-    // Title animation on scroll
-    gsap.fromTo(
-      title,
-      {
-        y: 0,
-        scale: 1,
-      },
-      {
-        y: -100,
-        scale: 0.8,
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      }
-    );
-
-    // Subtitle and button fade out
-    gsap.to([subtitle, button], {
+    // Title and Subtitle and button fade out
+    gsap.to([title, subtitle, button], {
       opacity: 0,
       y: 50,
       scrollTrigger: {
@@ -79,24 +40,39 @@ export const Hero = () => {
       ref={heroRef}
       className="relative min-h-screen w-screen overflow-hidden flex items-center justify-center"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(125% 125% at 50% 10%, #000A17 40%, #007FFF 100%)",
-          }}
-        />
-        <img
-          src="./images/earth.png"
-          alt="Earth"
-          className="absolute top-96 left-1/2 -translate-x-1/2 w-[1000px] opacity-40 pointer-events-none animate-pulse z-30 rotating-earth"
-        />
+        <div className="absolute inset-0 -z-10" />
+        <div className="absolute top-96 left-1/2 -translate-x-1/2 w-[1000px] z-30">
+          {/* Outer glow ring */}
+          <div className="absolute inset-0 rounded-full bg-gradient-radial from-blue-400/20 via-cyan-400/10 to-transparent blur-3xl scale-150 animate-pulse"></div>
+
+          {/* Middle glow ring */}
+          <div
+            className="absolute inset-0 rounded-full bg-gradient-radial from-blue-500/30 via-cyan-500/15 to-transparent blur-2xl scale-125 animate-pulse"
+            style={{ animationDelay: "0.5s" }}
+          ></div>
+
+          {/* Inner glow ring */}
+          <div
+            className="absolute inset-0 rounded-full bg-gradient-radial from-white/20 via-blue-300/20 to-transparent blur-xl scale-110 animate-pulse"
+            style={{ animationDelay: "1s" }}
+          ></div>
+
+          {/* Earth image with enhanced glow */}
+          <img
+            src="./images/earth.png"
+            alt="Earth"
+            className="relative w-full opacity-40 pointer-events-none rotating-earth"
+            style={{
+              filter:
+                "drop-shadow(0 0 50px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 100px rgba(34, 197, 94, 0.4)) drop-shadow(0 0 150px rgba(147, 51, 234, 0.2))",
+            }}
+          />
+        </div>
         <Particles
           className="absolute inset-0 z-10"
           particleColors={["#ffffff", "#ffffff"]}
-          particleCount={200}
+          particleCount={300}
           particleSpread={10}
           speed={0.1}
           particleBaseSize={10}
@@ -112,7 +88,23 @@ export const Hero = () => {
           ref={titleRef}
           className="text-7xl font-bold tracking-tight leading-tight"
         >
-          <SplitText />
+          <h1 className="text-white text-7xl font-bold tracking-tight leading-tight">
+            Цаг захиалгын
+          </h1>
+          <h1
+            className="text-white text-7xl font-bold tracking-tight leading-tight"
+            style={{
+              background:
+                "linear-gradient(to top, #FFFFFF 0%, #E6F3FF 52%, #B3D9FF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+              marginBottom: "20px",
+            }}
+          >
+            Нэгдсэн платформ
+          </h1>
         </div>
 
         <div ref={subtitleRef}>
@@ -125,7 +117,20 @@ export const Hero = () => {
         </div>
 
         <div ref={buttonRef} className="flex justify-center items-center mt-12">
-          <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
+          <button
+            className="group px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+            style={{
+              background:
+                "linear-gradient(to right, #FFFFFF 0%, #E6F3FF 52%, #B3D9FF 100%)",
+              color: "#000A17",
+              fontSize: "14px",
+              fontWeight: "600",
+              padding: "10px 24px",
+              borderRadius: "25px",
+              textDecoration: "none",
+              transition: "all 0.3s ease",
+            }}
+          >
             <span className="flex items-center gap-2">
               Бүртгүүлэх
               <svg

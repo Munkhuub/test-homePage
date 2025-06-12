@@ -5,14 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 interface ParallaxSectionProps {
   className?: string;
   title: string;
-  bgColor: string;
   children?: ReactNode;
 }
 
 export const ParallaxSection = ({
   className,
   title,
-  bgColor,
   children,
 }: ParallaxSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -64,7 +62,6 @@ export const ParallaxSection = ({
       className={`relative h-screen flex flex-col items-center justify-center ${
         className || ""
       }`}
-      style={{ background: bgColor }}
     >
       <div className="absolute inset-0 -z-10" />
 
